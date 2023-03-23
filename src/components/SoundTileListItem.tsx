@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAppDispatch } from "../app/hooks";
-import { play } from "../app/slices/soundSlice";
-import VolumeSlider from "./VolumeSlider";
+import { play, changeVol } from "../app/slices/soundSlice";
+import { Slider } from "@mui/material";
 
 interface SoundTileListItemProps {
 	sound: string;
@@ -9,16 +9,31 @@ interface SoundTileListItemProps {
 
 const SoundTileListItem: React.FC<SoundTileListItemProps> = ({ sound }) => {
 	const dispatch = useAppDispatch();
-	const [isPlaying, setIsPlaying] = useState(false);
 
 	const handleOnClick = () => {
-		setIsPlaying(!isPlaying);
 		dispatch(play(sound));
+	};
+
+	const handleOnChange = (event: Event, newValue: number | number[]) => {
+		const newVolume = typeof newValue === "number" ? newValue : newValue[0];
+
+		dispatch(changeVol({ sound, volume: newVolume }));
 	};
 
 	return (
 		<div className="">
-			<button onClick={handleOnClick}>{sound}</button> <VolumeSlider />
+			<button onClick={handleOnClick}>{sound}</button>
+			<Slider
+				onChange={handleOnChange}
+				defaultValue={0.5}
+				color="secondary"
+				min={0}
+				sx={{ height: `150px` }}
+				orientation="vertical"
+				max={1}
+				step={0.1}
+				aria-label="Volume"
+			/>
 		</div>
 	);
 };

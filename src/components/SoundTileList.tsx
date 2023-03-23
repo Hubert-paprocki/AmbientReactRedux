@@ -4,17 +4,9 @@ import SoundTileListItem from "./SoundTileListItem";
 
 const SoundTileList: React.FC = () => {
 	const renderedSoundTileList = Content.map((item) => {
-		return (
-			<div key={item.id}>
-				<SoundTileListItem sound={item.sound} />
-			</div>
-		);
+		return <SoundTileListItem sound={item.sound} key={item.id} />;
 	});
-	return (
-		<div className="flex flex-wrap justify-center items-center max-w-6xl mx-auto my-12 flex-row gap-x-5">
-			{renderedSoundTileList}
-		</div>
-	);
+	return <main className="">{renderedSoundTileList}</main>;
 };
 
 export default SoundTileList;

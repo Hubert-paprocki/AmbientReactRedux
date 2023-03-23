@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface SoundState {
-  [key: string]: boolean;
+interface Sound {
+  isPlaying: boolean;
+  volume: number;
 }
+
+type SoundState = Record<string, Sound>;
 
 const initialState: SoundState = {};
 
-// Create an object to cache Audio objects
 const audioCache: Record<string, HTMLAudioElement> = {};
 
 export const soundSlice = createSlice({
@@ -15,11 +17,12 @@ export const soundSlice = createSlice({
   reducers: {
     play: (state, action: PayloadAction<string>) => {
       const sound = action.payload;
-      if (state[sound]) {
+      const soundState = state[sound] || { isPlaying: false, volume: 1 };
+      const isPlaying = soundState.isPlaying;
+
+      if (isPlaying) {
         const audio = audioCache[sound];
-        if (audio) {
-          audio.pause();
-        }
+        audio?.pause();
       } else {
         let audio = audioCache[sound];
         if (!audio) {
@@ -28,12 +31,34 @@ export const soundSlice = createSlice({
         }
         audio.id = sound;
         audio.loop = true;
+        audio.volume = soundState.volume;
         audio.play();
       }
-      state[sound] = !state[sound];
+
+      state[sound] = {
+        isPlaying: !isPlaying,
+        volume: soundState.volume,
+      };
+    },
+
+    changeVol: (state, action: PayloadAction<{ sound: string; volume: number }>) => {
+      const { sound, volume } = action.payload;
+      const soundState = state[sound] || { isPlaying: false, volume: 0.5 };
+      const isPlaying = soundState.isPlaying;
+
+      const audio = audioCache[sound];
+      if (isPlaying && audio) {
+        audio.volume = volume;
+      }
+
+      state[sound] = {
+        isPlaying,
+        volume,
+      };
     },
   },
 });
 
-export const { play } = soundSlice.actions;
+export const { play, changeVol } = soundSlice.actions;
+
 export default soundSlice.reducer;
