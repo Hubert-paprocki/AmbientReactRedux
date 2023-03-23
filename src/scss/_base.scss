@@ -1,0 +1,26 @@
+@import "config";
+* {
+    padding: 0;
+    margin: 0;
+    color: $Color-secondary;
+    scroll-behavior: smooth;
+}
+:root {
+    color-scheme: dark;
+}
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+}
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-size: 1.6rem;
+}

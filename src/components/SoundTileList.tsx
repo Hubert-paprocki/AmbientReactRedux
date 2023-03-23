@@ -4,9 +4,11 @@ import SoundTileListItem from "./SoundTileListItem";
 
 const SoundTileList: React.FC = () => {
 	const renderedSoundTileList = Content.map((item) => {
-		return <SoundTileListItem sound={item.sound} key={item.id} />;
+		return (
+			<SoundTileListItem sound={item.sound} key={item.id} icon={item.icon} />
+		);
 	});
-	return <main className="">{renderedSoundTileList}</main>;
+	return <main className="sound-menu">{renderedSoundTileList}</main>;
 };
 
 export default SoundTileList;

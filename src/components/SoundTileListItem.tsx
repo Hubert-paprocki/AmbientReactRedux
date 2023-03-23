@@ -2,12 +2,15 @@ import React from "react";
 import { useAppDispatch } from "../app/hooks";
 import { play, changeVol } from "../app/slices/soundSlice";
 import { Slider } from "@mui/material";
-
 interface SoundTileListItemProps {
 	sound: string;
+	icon: string;
 }
 
-const SoundTileListItem: React.FC<SoundTileListItemProps> = ({ sound }) => {
+const SoundTileListItem: React.FC<SoundTileListItemProps> = ({
+	sound,
+	icon,
+}) => {
 	const dispatch = useAppDispatch();
 
 	const handleOnClick = () => {
@@ -21,18 +24,21 @@ const SoundTileListItem: React.FC<SoundTileListItemProps> = ({ sound }) => {
 	};
 
 	return (
-		<div className="">
-			<button onClick={handleOnClick}>{sound}</button>
+		<div className="play-box">
+			<button onClick={handleOnClick} className="reset-button">
+				<span className=" material-symbols-outlined play-box__btn--ico">
+					{icon}
+				</span>
+			</button>
 			<Slider
 				onChange={handleOnChange}
 				defaultValue={0.5}
 				color="secondary"
 				min={0}
-				sx={{ height: `150px` }}
-				orientation="vertical"
 				max={1}
 				step={0.1}
 				aria-label="Volume"
+				className="volume-slider"
 			/>
 		</div>
 	);

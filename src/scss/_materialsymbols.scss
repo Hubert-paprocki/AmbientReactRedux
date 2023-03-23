@@ -1,0 +1,67 @@
+@import "config";
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 1, "wght" 100, "GRAD" -25, "opsz" 48;
+    color: currentColor;
+    filter: drop-shadow(1px 5px 5px rgb(0 0 0 / 0.5)) !important;
+    user-select: none;
+    &:hover {
+        color: lighten($Color-additional, 30%);
+        cursor: pointer;
+    }
+}
+.active {
+    color: lighten($Color-additional, 20%);
+}
+.expand_more {
+    display: block !important;
+    font-size: 11rem !important;
+    transition: all 0.2s;
+    &:hover {
+        transform: scale(1.1);
+    }
+    @media (max-width: $Bp-footer-l) {
+        font-size: 8rem !important;
+    }
+    @media (max-width: $Bp-footer-l) {
+        font-size: 6rem !important;
+    }
+    @media (max-height: $bp-height-m) {
+        font-size: 6rem !important;
+    }
+}
+.play-box__btn--ico {
+    display: block !important;
+    font-size: 11rem !important;
+    transition: all 0.2s;
+    &:hover {
+        color: lighten($Color-additional, 30%);
+        cursor: pointer;
+    }
+    @media (max-width: $Bp-footer-l) {
+        font-size: 8rem !important;
+    }
+    @media (max-width: $Bp-footer-l) {
+        font-size: 6rem !important;
+    }
+    @media (max-height: $bp-height-m) {
+        font-size: 6rem !important;
+    }
+}
+.icon {
+    display: inline-block;
+    width: 4em;
+    height: 3em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: $Color-secondary;
+    margin: 1rem;
+    transition: all 0.2s;
+    pointer-events: bounding-box;
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-2px) scale(1.1);
+    }
+    &:active {
+        transform: translateY(0);
+    }
+}

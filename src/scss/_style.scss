@@ -1,0 +1,190 @@
+@import "config";
+
+.background-box {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(transparent 25%, $Color-primary 110%);
+    justify-content: space-;
+
+    &__img {
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+    }
+    .logo {
+        font-size: 10rem;
+        text-transform: uppercase;
+        font-weight: 100;
+        margin-top: 5%;
+        color: $Color-primary;
+        filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+        border-bottom: 1px $Color-primary dashed;
+        height: fit-content;
+        background-image: linear-gradient(to right, $Color-primary 0%, $Color-additional 50%, $Color-primary 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: textclip 4s linear infinite;
+        justify-self: baseline;
+        @media (max-width: $Bp-footer-l) {
+            font-size: 8rem;
+            margin-top: $Whitespace-l;
+        }
+        @media (max-height: $bp-height-m) {
+            font-size: 8rem;
+            margin-top: $Whitespace-l;
+        }
+        @media (max-width: $Bp-footer-m) {
+            font-size: 7rem;
+            margin-top: $Whitespace-m;
+        }
+        @media (max-width: $Bp-header-xs) {
+            font-size: 6rem;
+            margin-top: $Whitespace-s;
+        }
+
+        &::after {
+            content: "ambient";
+            margin-left: -43.2rem;
+            @media (max-width: $Bp-footer-l) {
+                margin-left: -34.55rem;
+            }
+            @media (max-height: $bp-height-m) {
+                margin-left: -34.55rem;
+            }
+            @media (max-width: $Bp-footer-m) {
+                margin-left: -30.25rem;
+            }
+            @media (max-width: $Bp-header-xs) {
+                margin-left: -25.9rem;
+            }
+        }
+    }
+}
+
+.footer {
+    background-color: $Color-primary;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    padding: $Whitespace-l;
+    text-align: center;
+    @media (max-width: $Bp-footer-l) {
+        grid-template-columns: 1fr;
+    }
+    @media (max-width: $Bp-footer-m) {
+        padding: $Whitespace-m;
+    }
+    &__description {
+        border-right: 1px solid $Color-secondary;
+        padding-right: $Whitespace-l;
+        @media (max-width: $Bp-footer-l) {
+            border-right: none;
+            border-bottom: 1px solid $Color-secondary;
+            padding: 0 0 $Whitespace-l 0;
+        }
+        @media (max-width: $Bp-footer-m) {
+            padding-bottom: $Whitespace-m;
+        }
+    }
+    &__credits {
+        padding-left: $Whitespace-l;
+        display: flex;
+        flex-direction: column;
+        @media (max-width: $Bp-footer-l) {
+            padding: $Whitespace-l 0 0 0;
+        }
+        @media (max-width: $Bp-footer-m) {
+            padding-top: $Whitespace-m;
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            a {
+                width: 5rem;
+                height: 5rem;
+                color: wheat;
+                text-decoration: none;
+            }
+        }
+    }
+    .name {
+        background-image: linear-gradient(to right, #e14a7c 0%, lighten($Color-additional, 20%) 50%, #e14a7c 100%);
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 2s linear infinite;
+    }
+}
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+.sound-menu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    gap: $Whitespace-l;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-height: $bp-height-xl) {
+        gap: $Whitespace-m;
+        width: 70%;
+    }
+    @media (max-height: $bp-height-xl) {
+        width: 100%;
+    }
+    @media (max-width: $Bp-footer-l) {
+        gap: $Whitespace-s;
+        width: 100%;
+    }
+
+    .play-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100px;
+        &__btn {
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
+.reset-button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+}
