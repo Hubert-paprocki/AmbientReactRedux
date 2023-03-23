@@ -1,7 +1,8 @@
 import React from "react";
-import { useAppDispatch } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { play, changeVol } from "../app/slices/soundSlice";
 import { Slider } from "@mui/material";
+
 interface SoundTileListItemProps {
 	sound: string;
 	icon: string;
@@ -12,6 +13,10 @@ const SoundTileListItem: React.FC<SoundTileListItemProps> = ({
 	icon,
 }) => {
 	const dispatch = useAppDispatch();
+
+	const isPlaying = useAppSelector(
+		(state) => state.sound[sound]?.isPlaying || false
+	);
 
 	const handleOnClick = () => {
 		dispatch(play(sound));
@@ -26,7 +31,11 @@ const SoundTileListItem: React.FC<SoundTileListItemProps> = ({
 	return (
 		<div className="play-box">
 			<button onClick={handleOnClick} className="reset-button">
-				<span className=" material-symbols-outlined play-box__btn--ico">
+				<span
+					className={`material-symbols-outlined play-box__btn--ico ${
+						isPlaying ? "active" : ""
+					}`}
+				>
 					{icon}
 				</span>
 			</button>
@@ -38,7 +47,7 @@ const SoundTileListItem: React.FC<SoundTileListItemProps> = ({
 				max={1}
 				step={0.1}
 				aria-label="Volume"
-				className="volume-slider"
+				className={`volume-slider ${isPlaying ? "active-slider" : ""}`}
 			/>
 		</div>
 	);

@@ -4,6 +4,7 @@ import Logo from "./components/Logo";
 import SoundTileList from "./components/SoundTileList";
 import "./scss/main.scss";
 import bgimg from "./images/background-1.png";
+import ScrollDownButton from "./components/ScrollDownButton";
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 				<img src={bgimg} alt="" className="background-box__img" />
 				<Logo />
 				<SoundTileList />
+				<ScrollDownButton />
 			</div>
 			<Footer />
 		</>

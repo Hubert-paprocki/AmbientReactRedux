@@ -1,10 +1,11 @@
 import React from "react";
+import SocialMediaList from "./SocialMediaList";
 
 const Footer = () => {
 	return (
 		<footer className="footer">
 			<div className="footer__description">
-				<p>
+				<p className="footer__description-content">
 					Ambient is a website designed to help people focus while they study or
 					work. The site features a variety of ambient sounds that users can
 					listen to in the background while they complete their tasks. These
@@ -18,6 +19,7 @@ const Footer = () => {
 					Copyright © 2023 <span className="name">Hubert Paprocki</span> All
 					rights reserved.
 				</p>
+				<SocialMediaList />
 			</div>
 		</footer>
 	);

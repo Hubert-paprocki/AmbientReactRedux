@@ -11,6 +11,7 @@
 }
 .active {
     color: lighten($Color-additional, 20%);
+    opacity: 1;
 }
 .expand_more {
     display: block !important;
