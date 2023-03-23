@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
 import { play } from "../app/slices/soundSlice";
+import VolumeSlider from "./VolumeSlider";
 
 interface SoundTileListItemProps {
 	sound: string;
@@ -15,7 +16,11 @@ const SoundTileListItem: React.FC<SoundTileListItemProps> = ({ sound }) => {
 		dispatch(play(sound));
 	};
 
-	return <button onClick={handleOnClick}>{sound}</button>;
+	return (
+		<div className="">
+			<button onClick={handleOnClick}>{sound}</button> <VolumeSlider />
+		</div>
+	);
 };
 
 export default SoundTileListItem;

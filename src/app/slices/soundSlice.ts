@@ -6,6 +6,9 @@ interface SoundState {
 
 const initialState: SoundState = {};
 
+// Create an object to cache Audio objects
+const audioCache: Record<string, HTMLAudioElement> = {};
+
 export const soundSlice = createSlice({
   name: 'sound',
   initialState,
@@ -13,18 +16,19 @@ export const soundSlice = createSlice({
     play: (state, action: PayloadAction<string>) => {
       const sound = action.payload;
       if (state[sound]) {
-        const audio = document.getElementById(sound) as HTMLAudioElement;
+        const audio = audioCache[sound];
         if (audio) {
           audio.pause();
-          audio.currentTime = 0;
         }
       } else {
-
-        const audio = new Audio(`../../sounds/${sound}.ogg`);
+        let audio = audioCache[sound];
+        if (!audio) {
+          audio = new Audio(require(`../../sounds/${sound}.ogg`));
+          audioCache[sound] = audio;
+        }
         audio.id = sound;
         audio.loop = true;
         audio.play();
-        console.log(audio);
       }
       state[sound] = !state[sound];
     },
