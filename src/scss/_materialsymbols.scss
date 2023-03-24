@@ -9,6 +9,7 @@
         cursor: pointer;
     }
 }
+
 .active {
     color: lighten($Color-additional, 20%);
     opacity: 1;
@@ -17,6 +18,31 @@
     display: block !important;
     font-size: 11rem !important;
     transition: all 0.2s;
+    &:hover {
+        transform: scale(1.1);
+    }
+    @media (max-width: $Bp-footer-l) {
+        font-size: 8rem !important;
+    }
+    @media (max-width: $Bp-footer-l) {
+        font-size: 6rem !important;
+    }
+    @media (max-height: $bp-height-m) {
+        font-size: 6rem !important;
+    }
+}
+.settings {
+    font-variation-settings: "FILL" 1, "wght" 300, "GRAD" -25, "opsz" 48;
+    display: block !important;
+    font-size: 5rem !important;
+    transition: all 0.2s;
+    background-color: rgba($Color-primary, 0.55);
+    padding: 0.8rem;
+    border-radius: 100%;
+    &-active {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
     &:hover {
         transform: scale(1.1);
     }

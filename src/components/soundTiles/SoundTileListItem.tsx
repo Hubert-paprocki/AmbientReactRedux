@@ -1,6 +1,6 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { play, changeVol } from "../app/slices/soundSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { play, changeVol } from "../../app/slices/soundSlice";
 import { Slider } from "@mui/material";
 
 interface SoundTileListItemProps {
