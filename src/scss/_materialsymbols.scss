@@ -73,6 +73,24 @@
     @media (max-height: $bp-height-m) {
         font-size: 6rem !important;
     }
+    &__alternative {
+        display: block !important;
+        font-size: 9rem !important;
+        transition: all 0.2s;
+        @media (max-width: $bp-icon-xl) {
+            font-size: 8rem !important;
+        }
+        @media (max-width: $Bp-footer-l) {
+            font-size: 6rem !important;
+        }
+
+        @media (max-height: $bp-height-m) {
+            font-size: 6rem !important;
+        }
+        @media (max-width: $bp-icon-lg) {
+            font-size: 4rem !important;
+        }
+    }
 }
 .icon {
     display: inline-block;

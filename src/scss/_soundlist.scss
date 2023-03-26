@@ -1,0 +1,51 @@
+.sound-menu {
+   display: flex;
+   flex-wrap: wrap;
+   width: 50%;
+   gap: $Whitespace-l;
+   align-items: center;
+   justify-content: center;
+
+   @media (max-height: $bp-height-xl) {
+      gap: $Whitespace-m;
+      width: 70%;
+   }
+   @media (max-height: $bp-height-xl) {
+      width: 100%;
+   }
+   @media (max-width: $Bp-footer-l) {
+      gap: $Whitespace-s;
+      width: 100%;
+   }
+   &__alternative {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-evenly;
+      align-items: center;
+      max-width: 150rem;
+      max-height: 300px;
+      width: 100%;
+      .play-box__alternative {
+         display: flex;
+         flex-direction: column-reverse;
+         justify-content: space-between;
+         align-items: center;
+         height: 100%;
+         gap: $Whitespace-m;
+         margin-top: $Whitespace-l;
+      }
+   }
+
+   .play-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+
+      &__btn {
+         background-color: transparent;
+         border: none;
+      }
+   }
+}

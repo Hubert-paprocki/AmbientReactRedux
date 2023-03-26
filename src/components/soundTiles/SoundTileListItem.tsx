@@ -14,6 +14,10 @@ const SoundTileListItem: React.FC<SoundTileListItemProps> = ({
 }) => {
 	const dispatch = useAppDispatch();
 
+	const isAlternativeAppearance = useAppSelector(
+		(state) => state.app.isAlternative
+	);
+
 	const isPlaying = useAppSelector(
 		(state) => state.sound[sound]?.isPlaying || false
 	);
@@ -29,26 +33,46 @@ const SoundTileListItem: React.FC<SoundTileListItemProps> = ({
 	};
 
 	return (
-		<div className="play-box">
+		<div
+			className={isAlternativeAppearance ? "play-box__alternative" : "play-box"}
+		>
 			<button onClick={handleOnClick} className="reset-button">
 				<span
-					className={`material-symbols-outlined play-box__btn--ico ${
-						isPlaying ? "active" : ""
+					className={`material-symbols-outlined  ${isPlaying ? "active" : ""} ${
+						isAlternativeAppearance
+							? "play-box__btn--ico__alternative"
+							: "play-box__btn--ico"
 					}`}
 				>
 					{icon}
 				</span>
 			</button>
-			<Slider
-				onChange={handleOnChange}
-				defaultValue={0.5}
-				color="secondary"
-				min={0}
-				max={1}
-				step={0.1}
-				aria-label="Volume"
-				className={`volume-slider ${isPlaying ? "active-slider" : ""}`}
-			/>
+			{isAlternativeAppearance ? (
+				<Slider
+					onChange={handleOnChange}
+					defaultValue={0.5}
+					color="secondary"
+					min={0}
+					max={1}
+					step={0.1}
+					aria-label="Volume"
+					className={`volume-slider__alternative ${
+						isPlaying ? "active-slider" : ""
+					}`}
+					orientation={"vertical"}
+				/>
+			) : (
+				<Slider
+					onChange={handleOnChange}
+					defaultValue={0.5}
+					color="secondary"
+					min={0}
+					max={1}
+					step={0.1}
+					aria-label="Volume"
+					className={`volume-slider ${isPlaying ? "active-slider" : ""}`}
+				/>
+			)}
 		</div>
 	);
 };

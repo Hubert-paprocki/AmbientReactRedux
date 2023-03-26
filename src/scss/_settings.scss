@@ -1,0 +1,59 @@
+.settings-button {
+   position: absolute;
+   top: 8rem;
+   right: 8rem;
+}
+
+.settings-box {
+   padding: 2rem;
+   border-radius: 0.5rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: lighten($Color-primary, 7);
+   position: absolute;
+   top: 16rem;
+   right: 8rem;
+   z-index: 1;
+
+   &__image-button {
+      width: 100px;
+      height: 100px;
+      border: none;
+      cursor: pointer;
+      transition: all 200ms;
+      border-radius: 1rem;
+      overflow: hidden;
+      opacity: 0.8;
+      box-shadow: 0px 0px 17px 8px rgba(34, 34, 37, 1);
+
+      &:hover {
+         transform: scale(105%);
+         opacity: 1;
+      }
+
+      &__photo {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   &__background-picker {
+      display: flex;
+      margin: 1rem 0 1rem 0;
+      gap: 2rem;
+   }
+
+   &__appearance-picker {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+
+      .small-text {
+         font-size: 1.2rem;
+         opacity: 0.5;
+      }
+   }
+}
